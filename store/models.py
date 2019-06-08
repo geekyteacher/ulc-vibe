@@ -29,7 +29,7 @@ class Product(models.Model):
     name = models.CharField(max_length=120)
     description = models.TextField()
     price = models.DecimalField(max_digits = 5, decimal_places = 2)
-    image =models.FilePathField(path="/img")
+    # image = models.ImageField(upload_to='img/')
     created_on = models.DateTimeField(auto_now_add=True)
     category = models.ForeignKey('Category', null=True, blank=True, on_delete=models.PROTECT)
 
@@ -38,7 +38,7 @@ class Product(models.Model):
         verbose_name_plural = "Products"
 
     def __str__(self):
-        return self.title
+        return self.name
 
     def get_cat_list(self):           #for now ignore this instance method,
         k = self.category
@@ -50,3 +50,8 @@ class Product(models.Model):
         for i in range(len(breadcrumb)-1):
             breadcrumb[i] = '/'.join(breadcrumb[-1:i-1:-1])
         return breadcrumb[-1:0:-1]
+
+class ProductPicture(models.Model):
+    image = models.ImageField(upload_to = 'img/')
+    added_on = models.DateTimeField(auto_now_add=True)
+    product = models.ForeignKey('Product', on_delete=models.CASCADE)
