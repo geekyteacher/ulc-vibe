@@ -52,6 +52,10 @@ class Product(models.Model):
         return breadcrumb[-1:0:-1]
 
 class ProductPicture(models.Model):
-    image = models.ImageField(upload_to = 'img/')
+    caption = models.CharField(max_length=120)
+    image = models.ImageField(upload_to='images/')
     added_on = models.DateTimeField(auto_now_add=True)
     product = models.ForeignKey('Product', on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.caption
