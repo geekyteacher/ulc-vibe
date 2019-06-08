@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'vibe_store',
     'accounts',
+    'store',
 ]
 
 MIDDLEWARE = [

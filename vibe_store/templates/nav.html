@@ -13,7 +13,7 @@
           <a {% if activate == 'blog' %}class="active nav-link" {% else %} class="nav-link" {% endif %} href="#">Blog</a>
         </li>
         <li class="nav-item">
-          <a {% if activate == 'store' %}class="active nav-link" {% else %} class="nav-link" {% endif %} href="#">Store</a>
+          <a {% if activate == 'store' %}class="active nav-link" {% else %} class="nav-link" {% endif %} href="{% url 'store_index' %}">Store</a>
         </li>
         <li class="nav-item">
           <a {% if activate == 'about' %}class="active nav-link" {% else %} class="nav-link" {% endif %} href="#">About Us</a>
