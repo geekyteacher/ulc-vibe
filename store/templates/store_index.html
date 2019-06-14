@@ -3,7 +3,8 @@
 
 {% block content %}
 <h1>Store Index</h1>
-<h1>Categories</h1>
+<p>Wellcome to the online store...stuff will go here</p>
+<h2>Categories</h2>
 <main role="main">
 <div class="container"> <!-- Need this?-->
 <div class="row">
@@ -12,11 +13,8 @@
             <div class="col-md-4">
                 <div class="card mb-2">
                     <div class="card-body">
-                        <h5 class="card-title">{{ category.name }}</h5>
+                        <a href="{% url 'store_category' category.pk %}"><h5 class="card-title">{{ category.name }}</h5></a>
                         <p class="card-text">{{ category.description }}
-                            <a href="{% url 'store_category' category.pk %}">
-                                {{ category.name }}
-                            </a>
                         </p>
                     </div>
                 </div>
@@ -25,5 +23,5 @@
         {% endfor %}
 </div>
 </div>
-</main
+</main>
 {% endblock %}
