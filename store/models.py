@@ -5,7 +5,7 @@ from django.db import models
 class Category(models.Model):
     name = models.CharField(max_length=20)
     description = models.TextField()
-    parent = models.ForeignKey('self',blank=True, null=True ,related_name='children', on_delete=models.PROTECT)
+    parent = models.ForeignKey('self',blank=True, null=True ,related_name='children', on_delete=models.SET_NULL)
 
     class Meta:
         verbose_name = "Category"
@@ -33,7 +33,7 @@ class Product(models.Model):
     stock = models.IntegerField(default=0)
     # image = models.ImageField(upload_to='img/')
     created_on = models.DateTimeField(auto_now_add=True)
-    category = models.ForeignKey('Category', null=True, blank=True, on_delete=models.PROTECT)
+    category = models.ForeignKey('Category', null=True, blank=True, on_delete=models.SET_NULL)
 
     class Meta:
         verbose_name = "Product"
