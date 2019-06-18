@@ -7,8 +7,10 @@ class CategoryAdmin(admin.ModelAdmin):
 
 class ProductPictureInline(admin.TabularInline):
     model = ProductPicture
+    
 
 class ProductAdmin(admin.ModelAdmin):
+    list_display = ("name", "description")
     inlines = [
         ProductPictureInline,
     ]

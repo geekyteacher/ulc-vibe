@@ -26,10 +26,43 @@ class Category(models.Model):
         return ' -> '.join(full_path[::-1])
 
 class Product(models.Model):
+
+    SIZE_NA = "N/A"
+    X_SMALL = "XS"
+    SMALL = "S"
+    MEDIUM = "M"
+    LARGE = "L"
+    X_LARGE = "XL"
+    XX_LARGE = "2XL"
+    NB_SMALL = "Small"
+    NB_LARGE = "Large"
+    CLOTHES_36 = "36"
+    CLOTHES_37 = "37"
+    CLOTHES_38 = "38"
+    MALE = "Male"
+    FEMALE = "Female"
+
+    SIZE_CHOICES = [
+        (SIZE_NA, "N/A"),
+        (X_SMALL, "XS"),
+        (SMALL, "S"),
+        (MEDIUM, "M"),
+        (LARGE, "L"),
+        (X_LARGE, "XL"),
+        (XX_LARGE, "2XL"),
+        (NB_SMALL, "Small (NB)"),
+        (NB_LARGE, "Large (NB)"),
+        (CLOTHES_36, "36"),
+        (CLOTHES_37, "37"),
+        (CLOTHES_38, "38"),
+        (MALE, "Male"),
+        (FEMALE, "Female"),
+    ]
+
     name = models.CharField(max_length=120)
     description = models.TextField()
     price = models.DecimalField(max_digits = 5, decimal_places = 2)
-    size = models.CharField(max_length=10, null=True)
+    size = models.CharField(choices = SIZE_CHOICES, default = SIZE_NA, max_length = 20)
     stock = models.IntegerField(default=0)
     # image = models.ImageField(upload_to='img/')
     created_on = models.DateTimeField(auto_now_add=True)
