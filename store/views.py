@@ -13,12 +13,12 @@ def store_index(request):
 def store_category(request, pk):
     
     products = Product.objects.all()
-    x = Category.objects.get(pk=pk)
+    cat_id = Category.objects.get(pk=pk)
     categories = Category.objects.filter(
-        parent_id__name__contains=x
+        parent_id__name__contains=cat_id
     )
     context = {
-        "category":x,
+        "category":cat_id,
         "categories":categories,
         "activate":"store",
         "products":products,
