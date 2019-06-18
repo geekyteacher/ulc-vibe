@@ -10,3 +10,9 @@ class sign_up(generic.CreateView):
     form_class = UserCreationForm
     success_url = reverse_lazy('login')
     template_name = 'signup.html' 
+
+def accounts_index(request):
+    context = {
+        "activate":"accounts",
+    }
+    return render(request, 'accounts_index.html',context)
